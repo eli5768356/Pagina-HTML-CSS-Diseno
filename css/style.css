@@ -1,0 +1,138 @@
+/* VARIABLES Y RESET */
+:root {
+    --color-primario: #5a5a5a;
+    --color-fondo: #ffffff;
+    --color-suave: #f4f4f4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Para que el "volver arriba" sea fluido */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* HEADER CON FLEXBOX */
+.main-header {
+    display: flex;
+    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--color-fondo);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--color-primario);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: #b19470; /* Color dorado/tierra tipo marca */
+}
+
+/* BANNER RESPONSIVE */
+.main-banner {
+    width: 100%;
+    overflow: hidden;
+}
+
+.main-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.main-banner img:hover {
+    transform: scale(1.02); /* Efecto sutil al pasar el ratón */
+}
+
+/* FOOTER CON FLEXBOX */
+.main-footer {
+    background-color: var(--color-suave);
+    padding: 40px 5% 20px;
+    margin-top: 50px;
+    color: var(--color-primario);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Para que en móvil bajen las secciones */
+    gap: 30px;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section h4 {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: #777;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+}
+
+.back-to-top {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.back-to-top a {
+    text-decoration: none;
+    color: var(--color-primario);
+    font-weight: bold;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.75rem;
+    margin-top: 20px;
+    color: #bbb;
+}
+
+/* MEDIA QUERIES (RESPONSIVE) */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column; /* Logo arriba, menú abajo en móvil */
+        gap: 15px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
