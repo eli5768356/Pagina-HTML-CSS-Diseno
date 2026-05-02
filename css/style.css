@@ -1,8 +1,11 @@
-/* VARIABLES Y RESET */
 :root {
+    --gold: #d4af37;
+    --dark: #1a1a1a;
+    --white: #ffffff;
     --color-primario: #5a5a5a;
     --color-fondo: #ffffff;
     --color-suave: #f4f4f4;
+    --transition: all 0.3s ease;
 }
 
 * {
@@ -12,18 +15,32 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Para que el "volver arriba" sea fluido */
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
+    background-color: var(--color-fondo);
 }
 
-/* HEADER CON FLEXBOX */
+a {
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--dark);
+}
+
 .main-header {
     display: flex;
-    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+    justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
     background-color: var(--color-fondo);
@@ -33,9 +50,7 @@ body {
     z-index: 1000;
 }
 
-.logo img {
-    height: 60px;
-}
+.logo img { height: 60px; }
 
 .main-nav ul {
     display: flex;
@@ -44,21 +59,13 @@ body {
 }
 
 .main-nav a {
-    text-decoration: none;
     color: var(--color-primario);
     font-weight: 500;
-    transition: color 0.3s;
 }
 
-.main-nav a:hover {
-    color: #b19470; /* Color dorado/tierra tipo marca */
-}
+.main-nav a:hover { color: #b19470; }
 
-/* BANNER RESPONSIVE */
-.main-banner {
-    width: 100%;
-    overflow: hidden;
-}
+.main-banner { width: 100%; overflow: hidden; }
 
 .main-banner img {
     width: 100%;
@@ -67,11 +74,63 @@ body {
     transition: transform 0.5s;
 }
 
-.main-banner img:hover {
-    transform: scale(1.02); /* Efecto sutil al pasar el ratón */
+.main-banner img:hover { transform: scale(1.02); }
+
+.shop-categories {
+    padding: 50px 20px;
+    max-width: 1400px; 
+    margin: 0 auto;
 }
 
-/* FOOTER CON FLEXBOX */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.category-card {
+    position: relative;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 70%);
+    z-index: 1;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.category-content { position: relative; z-index: 2; color: var(--white); }
+
+.category-content span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+
+.category-content h3 { margin: 5px 0 0; font-size: 1.3rem; font-weight: 600; }
+
+.cat-mujer { background-image: url('../imagenes/mujer.jpg'); }
+.cat-hombre { background-image: url('../imagenes/hombre.jpg'); }
+.cat-clasicos { background-image: url('../imagenes/clasicos.jpg'); }
+.cat-modernos { background-image: url('../imagenes/moderno.jpg'); }
+.cat-top { background-image: url('../imagenes/top-ventas.jpg'); border: 2px solid var(--gold); }
+.cat-top h3 { color: var(--gold); }
+
 .main-footer {
     background-color: var(--color-suave);
     padding: 40px 5% 20px;
@@ -82,27 +141,15 @@ body {
 .footer-content {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap; /* Para que en móvil bajen las secciones */
+    flex-wrap: wrap;
     gap: 30px;
 }
 
-.footer-section {
-    display: flex;
-    flex-direction: column;
-}
+.footer-section { display: flex; flex-direction: column; }
 
-.footer-section h4 {
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
+.footer-section h4 { margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem; }
 
-.footer-section a {
-    text-decoration: none;
-    color: #777;
-    margin-bottom: 8px;
-    font-size: 0.85rem;
-}
+.footer-section a { color: #777; margin-bottom: 8px; font-size: 0.85rem; }
 
 .back-to-top {
     text-align: center;
@@ -111,11 +158,7 @@ body {
     border-top: 1px solid #ddd;
 }
 
-.back-to-top a {
-    text-decoration: none;
-    color: var(--color-primario);
-    font-weight: bold;
-}
+.back-to-top a { color: var(--color-primario); font-weight: bold; }
 
 .copyright {
     text-align: center;
@@ -124,15 +167,16 @@ body {
     color: #bbb;
 }
 
-/* MEDIA QUERIES (RESPONSIVE) */
-@media (max-width: 768px) {
-    .main-header {
-        flex-direction: column; /* Logo arriba, menú abajo en móvil */
-        gap: 15px;
-    }
+@media (max-width: 1100px) {
+    .categories-grid { grid-template-columns: repeat(3, 1fr); }
+}
 
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
+@media (max-width: 768px) {
+    .main-header { flex-direction: column; gap: 15px; }
+    .footer-content { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 700px) {
+    .categories-grid { grid-template-columns: repeat(2, 1fr); }
+    .category-card { height: 250px; }
 }
